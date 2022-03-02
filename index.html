@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/wavesurfer.js"></script>
+
+</head>
+<body>
+    
+<div id="waveform"></div>
+
+<div style="text-align: center">
+  <button class="btn btn-primary" onclick="wavesurfer.playPause()">
+    <i class="glyphicon glyphicon-play"></i>
+    Play
+  </button>
+
+  <div class="row">
+    <div class="col-xs-1">
+      <i class="glyphicon glyphicon-zoom-in"></i>
+    </div>
+
+    <div class="col-xs-10">
+      <input id="slider" type="range" min="1" max="200" value="1" style="width: 100%" />
+    </div>
+
+    <div class="col-xs-1">
+      <i class="glyphicon glyphicon-zoom-out"></i>
+    </div>
+</div>
+<script type="text/javascript" >
+var wavesurfer = WaveSurfer.create({
+    container: document.getElementById('waveform'),
+    waveColor: 'violet',
+    progressColor: 'purple',
+    
+});
+wavesurfer.load('./1646244337738.ogg');
+var slider = document.querySelector('#slider');
+
+slider.oninput = function () {
+  var zoomLevel = Number(slider.value);
+  wavesurfer.zoom(zoomLevel);
+};
+</script>
+</body>
+</html>
